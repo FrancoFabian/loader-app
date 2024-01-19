@@ -1,20 +1,40 @@
+@if(!mostrar){
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Loader of Image
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+}
+<ion-content  [fullscreen]="true">
+  
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    @if(mostrar){
+      <!--[interval]="intervalTime"-->
+      <app-loader-img [images]="imagenes" [interval]="intervalTime" ></app-loader-img>
+    }
+    @if(!mostrar){
+      <div class="wrapper">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+      </div>
+      
+      <ion-button shape="round"  (click)="mostrarLoader()"><ion-icon slot="start" name="play"></ion-icon> Loader</ion-button>
+      <ion-input 
+      type="number"
+      label="Ingresa el tiempo del intervalo segundos"
+      label-placement="floating" fill="outline"
+      placeholder="Ingresa el tiempo en segundos"
+      [(ngModel)]="inputIntervalTime"
+       >
+      </ion-input>
+    }
+    
   </div>
 </ion-content>

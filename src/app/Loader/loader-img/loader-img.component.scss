@@ -1,0 +1,117 @@
+$color-texto-activo: #c1fee6;
+$color-posicion-activo: aliceblue;
+$color-borde-posicion: #909191;
+$tamano-posicion: 15px;
+$z-index-maximo: 1000;
+
+
+.image-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $z-index-maximo;
+}
+
+
+.imgNext {
+  width: 100%;
+  height: 100%;
+}
+
+.bandText {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  background-color: #1017179a;
+  transform: translateY(-200px);
+  position: absolute;
+  
+}
+
+#text {
+  font-size: 30px;
+  font-weight: bold;
+  color: $color-texto-activo;
+}
+
+.position {
+  border-radius: 50%;
+  width: $tamano-posicion;
+  height: $tamano-posicion;
+  background-color: transparent;
+  border: 2px solid $color-borde-posicion;
+}
+
+.position.active {
+  background-color: $color-posicion-activo;
+}
+
+.indices {
+  position: absolute;
+  z-index: 30;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  transform: translateY(-40px);
+}
+@media (max-width: 600px) {
+  .image-container {
+    width: 100%;
+    height: 300px;
+  }
+
+  ion-card {
+    width: 100%;
+    height: 300px;
+  }
+
+  #text {
+    font-size: 20px;
+  }
+
+  .bandText {
+    transform: translateY(-90px);
+    height: 25px;
+  }
+
+  .position {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .image-container {
+    width: 80%;
+    height: 350px;
+  }
+
+  ion-card {
+    --position: absolute;
+    width: 100%;
+    height: 100vh;
+  }
+
+  #text {
+    font-size: 25px;
+  }
+
+  .bandText {
+    transform: translateY(-100px);
+    height: 30px;
+  }
+
+  .position {
+    width: 12px;
+    height: 12px;
+  }
+}
+

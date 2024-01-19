@@ -1,27 +1,173 @@
+$color-texto-principal: #8c8c8c;
+$color-boton-fondo: #0f0d11;
+$color-boton-borde: #a306e6;
+$color-boton-texto: rgb(175, 255, 251);
+$fuente-titulo: 20px;
+$fuente-parrafo: 16px;
+$linea-altura-titulo: 26px;
+$linea-altura-parrafo: 22px;
+$ancho-boton-borde: 1px;
+$espaciado-vertical: 20px;
+ion-header{
+  margin-bottom: 0;
+}
+#QR{
+  background-color: #0f0d11;
+}
 #container {
   text-align: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+  
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  ion-button {
+    --background: #0f0d11;
+    --border-color: #a306e6;
+    --border-style: solid;
+    --border-width: 1px;
+    --color:rgb(175, 255, 251);
+      margin-top: -320px;
+      transform: translateX(-90%);
+  }
+
+  strong {
+    font-size: $fuente-titulo;
+    line-height: $linea-altura-titulo;
+  }
+
+  p {
+    font-size: $fuente-parrafo;
+    line-height: $linea-altura-parrafo;
+    color: $color-texto-principal;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }
 
-#container strong {
+ion-icon {
+  color: rgb(149, 232, 229);
   font-size: 20px;
-  line-height: 26px;
+}
+.wrapper {
+  width: 200px;
+  height: 60px;
+  position: relative;
+  margin: 230px auto;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.circle {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fff;
+  transform-origin: 50%;
+  animation: bounce 0.8s alternate infinite ease;
 }
 
-#container a {
-  text-decoration: none;
+.shadow {
+  width: 20px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(85, 85, 85, 0.9);
+  position: absolute;
+  top: 52px;
+  transform-origin: 50%;
+  left: 22%;
+  filter: blur(1px);
+  z-index: -1;
+  animation: shrink 0.8s alternate infinite ease;
+}
+
+.wrapper .circle:nth-child(1) {
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.wrapper .circle:nth-child(2) {
+  left: 50%; /* Espaciado para la segunda pelota */
+  animation-delay: 0.2s; /* Retraso más corto para un efecto sucesivo */
+}
+
+.wrapper .circle:nth-child(3) {
+  left: 85%; /* Espaciado para la tercera pelota */
+  animation-delay: 0.4s; /* Retraso aún más corto */
+}
+.wrapper .shadow:nth-child(4) { 
+  left: 22%;
+  animation-delay: 0s; /* Mismo delay que su círculo correspondiente */
+}
+
+.wrapper .shadow:nth-child(5) { /* Shadow del segundo círculo */
+  left: 57%; /* Debe coincidir con la posición left del segundo círculo */
+  animation-delay: 0.2s; /* Mismo delay que el segundo círculo */
+}
+
+.wrapper .shadow:nth-child(6) { /* Shadow del tercer círculo */
+  left: 93%; /* Debe coincidir con la posición left del tercer círculo */
+  animation-delay: 0.4s; /* Mismo delay que el tercer círculo */
+}
+
+
+@keyframes bounce {
+  0%, 100% {
+    top: 0;
+  }
+  50% {
+    top: -30px;
+  }
+}
+
+@keyframes shrink {
+  0%, 100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.5);
+  }
+}
+ion-input{
+  margin-top: -190px;
+  transform: translateX(200%);
+  width: 300px;
+}
+ion-title{
+  padding-left: 60px;
+}
+/* Pantallas medianas (tablets, pantallas pequeñas de escritorio) */
+@media(max-width:950px){
+  ion-input {
+    margin-top: -95px; /* Ajustar el margen superior */
+    transform: translateX(50%); /* Centrar el elemento */
+    width: 250px; /* Ajustar el ancho */
+  }
+}
+@media (max-width: 768px) {
+  ion-input {
+    margin-top: -95px; /* Ajustar el margen superior */
+    transform: translateX(50%); /* Centrar el elemento */
+    width: 250px; /* Ajustar el ancho */
+  }
+  ion-button {
+    margin-top: -160px; /* Ajuste del margen superior */
+    transform: translateX(10%); /* Ajuste de la posición */
+  }
+}
+
+/* Pantallas pequeñas (teléfonos móviles) */
+@media (max-width: 480px) {
+  ion-input {
+    margin-top: -50px; /* Ajustar el margen superior aún más */
+    transform: translateX(50%); /* Centrar el elemento para pantallas más pequeñas */
+    width: 200px; /* Reducir el ancho para adaptarse a pantallas más pequeñas */
+  }
+  ion-button {
+    margin-top: -80px; /* Ajuste del margen superior */
+    transform: translateX(60%); /* Ajuste de la posición */
+  }
+
 }
