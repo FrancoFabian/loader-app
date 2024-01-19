@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router} from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonInput } from '@ionic/angular/standalone';
 import { LoaderImgComponent } from '../Loader/loader-img/loader-img.component';
+import { ChangeMostrarService } from '../Service/change-mostrar.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -25,7 +26,7 @@ export class HomePage {
   private router = inject(Router)
   //valor por defecto para cada intervalo en caso de no ingresar nada en el input
   intervalTime: number = 5000;
-  inputIntervalTime?: number;
+  inputIntervalTime?: number | null;
   imagenes: { src: string; text: string }[] = [
     { src: '../../assets/img/1.jpg', text: 'Welcome to my test' },
     { src: '../../assets/img/2.jpg', text: 'This is the image uploader.' },
@@ -41,21 +42,23 @@ export class HomePage {
    * Lleva a cabo si es false mantendra los elementos inicialmente 
    */
   mostrar: boolean = false;
-  constructor() {
-  }
+  constructor(private share:ChangeMostrarService) {
+    this.share.currentMostrar.subscribe(mostrar => {
+      this.mostrar = mostrar;
+    });
+}
   
   mostrarLoader() {
-    this.mostrar = true;
+    this.share.changeMostrar(true);
      // Convertir el tiempo de entrada a milisegundos
     if (this.inputIntervalTime) {
       this.intervalTime = this.inputIntervalTime * 1000;
     }
   // Usar el valor de intervalTime para el setTimeout
     setTimeout(() => {
-      this.mostrar = false;
-      this.inputIntervalTime = Number(null)
+      this.inputIntervalTime = null
       this.router.navigate(['rutaFinal'])
-      
+     
     }, this.intervalTime * (this.imagenes.length + 1)); // Nota el cambio aquí
   }
   

@@ -24,16 +24,19 @@
         <div class="shadow"></div>
         <div class="shadow"></div>
       </div>
+      <div class="workes">
+        <ion-button   (click)="mostrarLoader()"><ion-icon slot="start" name="play"></ion-icon> Loader</ion-button>
+
+        <ion-input 
+        type="number"
+        label="Ingresa el tiempo del intervalo segundos"
+        label-placement="floating" fill="outline"
+        placeholder="Ingresa el tiempo en segundos"
+        [(ngModel)]="inputIntervalTime"
+        >
+        </ion-input>
+    </div>
       
-      <ion-button shape="round"  (click)="mostrarLoader()"><ion-icon slot="start" name="play"></ion-icon> Loader</ion-button>
-      <ion-input 
-      type="number"
-      label="Ingresa el tiempo del intervalo segundos"
-      label-placement="floating" fill="outline"
-      placeholder="Ingresa el tiempo en segundos"
-      [(ngModel)]="inputIntervalTime"
-       >
-      </ion-input>
     }
     
   </div>

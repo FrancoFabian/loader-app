@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IonTitle, IonContent, IonText, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { ChangeMostrarService } from 'src/app/Service/change-mostrar.service';
 
 @Component({
   selector: 'app-ruta-final',
@@ -18,10 +19,11 @@ import { IonTitle, IonContent, IonText, IonButton, IonIcon } from '@ionic/angula
 })
 export class RutaFinalComponent  implements OnInit {
 private routes = inject(Router)
-  constructor() { }
+  constructor(private share:ChangeMostrarService) { }
 
   ngOnInit() {}
   goHome(){
+    this.share.changeMostrar(false);
     this.routes.navigate(['home'])
   }
 
